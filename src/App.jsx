@@ -10,14 +10,14 @@ export default function App() {
 
   return (
     <>
-    {/* <AppToDoList /> */}
-    <AppProfile />
+    <AppToDoList />
+    {/* <AppProfile />
     <hr />
     <AppProducts />
     <hr />
     <AppJSX />
     <hr />
-    <AppCounter />
+    <AppCounter /> */}
     </>
   );
 }
