@@ -21,25 +21,27 @@ const apiClient = {
                 ...option.headers
             },
             referrerPolicy: 'no-referrer',
-            body: JSON.stringify(data)
+            body: option.method !== 'GET' ? JSON.stringify(data) : null
         }
         // console.log('option: ', option)
-        return fetch(url, options)
+        const result = fetch(url, options).then((res) => res.json())
+        console.log('api result: ', result)
+        return result
     },
     get(url, parameter, option) {
-        return this.request(`${url}?${this.makeQueryParam(parameter)}`, { ...option, method: 'GET'})
+        return this.request(`${url}?${parameter ? this.makeQueryParam(parameter) : ''}`, null, { ...option, method: 'GET'})
     },
     post(url, data, option) {
         return this.request(url, data, { ...option, method: 'POST'})
     },
     put(url, parameter, data, option) {
-        return this.request(`${url}?${this.makeQueryParam(parameter)}`, data, { ...option, method: 'PUT'})
+        return this.request(`${url}?${parameter ? this.makeQueryParam(parameter) : ''}`, data, { ...option, method: 'PUT'})
     },
     patch(url, parameter, data, option) {
-        return this.request(`${url}?${this.makeQueryParam(parameter)}`, data, { ...option, method: 'PATCH'})
+        return this.request(`${url}?${parameter ? this.makeQueryParam(parameter) : ''}`, data, { ...option, method: 'PATCH'})
     },
     delete(url, parameter, option) {
-        return this.request(`${url}?${this.makeQueryParam(parameter)}`, { ...option, method: 'DELETE'})
+        return this.request(`${url}?${parameter ? this.makeQueryParam(parameter) : ''}`, null, { ...option, method: 'DELETE'})
     },
 }
 
