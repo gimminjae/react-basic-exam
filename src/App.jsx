@@ -8,7 +8,7 @@ import apiClient from './js/api';
 // import AppProducts from './AppProducts';
 
 export default function App() {
-
+  const apiKey = 'Bnmmd8WYp5ELwT+WQGOz6Q==FxOF63E0rSQh9FnC'
   const [user, setUser] = useState(null)
   async function assignUser() {
     const result = await getRandomUser()
@@ -17,15 +17,11 @@ export default function App() {
   async function getRandomUser() {
     const result = await apiClient.get('https://api.api-ninjas.com/v1/randomuser', null, {
       headers: {
-        'X-Api-Key': 'Bnmmd8WYp5ELwT+WQGOz6Q==FxOF63E0rSQh9FnC'
+        'X-Api-Key': apiKey
       }
     })
-    console.log(result)
     return result
   }
-  useEffect(() => {
-    assignUser()
-  }, [])
 
   return (
     <>
@@ -39,6 +35,7 @@ export default function App() {
         </div>
       ) : ''
     }
+    <hr />
     <AppToDoList />
     {/* <AppProfile />
     <hr />

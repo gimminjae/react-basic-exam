@@ -23,9 +23,7 @@ const apiClient = {
             referrerPolicy: 'no-referrer',
             body: option.method !== 'GET' ? JSON.stringify(data) : null
         }
-        // console.log('option: ', option)
         const result = fetch(url, options).then((res) => res.json())
-        console.log('api result: ', result)
         return result
     },
     get(url, parameter, option) {
